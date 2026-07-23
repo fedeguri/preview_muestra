@@ -122,6 +122,25 @@ p.lead{font-size:16px;line-height:1.7;color:var(--piedra);margin-bottom:14px;}
 .calendario .dia.elegido{background:var(--acento);color:var(--carbon);font-weight:700;}
 .aviso-demo{font-size:12.5px;color:var(--piedra);background:var(--crema-osc);padding:10px 14px;border-radius:4px;margin-top:16px;}
 
+.ver-caracteristicas{display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.01em;color:var(--piedra-osc);background:none;border:none;padding:0;margin:-8px 0 18px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+.ver-caracteristicas:hover{color:var(--ocre);}
+
+/* MODAL DETALLE DE CABAÑA */
+.modal-overlay{position:fixed;inset:0;background:rgba(35,35,31,.72);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;}
+.modal-overlay.abierto{display:flex;}
+.modal-box{background:var(--crema);max-width:620px;width:100%;max-height:85vh;overflow-y:auto;border-radius:10px;position:relative;box-shadow:var(--sombra);}
+.modal-cerrar{position:absolute;top:14px;right:14px;background:var(--blanco);border:none;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer;z-index:2;}
+.modal-foto{aspect-ratio:16/10;overflow:hidden;}
+.modal-foto img{width:100%;height:100%;object-fit:cover;display:block;}
+.modal-cuerpo{padding:30px 32px 34px;}
+.modal-cuerpo h3{font-family:var(--display);font-weight:600;font-size:24px;color:var(--piedra-osc);margin-bottom:6px;}
+.modal-precio{font-family:var(--mono);font-size:14px;color:var(--ocre);margin-bottom:16px;}
+.modal-cuerpo p{color:var(--piedra);margin-bottom:16px;font-size:15px;line-height:1.6;}
+.modal-amenities{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 22px;font-size:14px;}
+.modal-amenities li{display:flex;gap:8px;align-items:flex-start;color:var(--carbon);}
+.modal-amenities svg{flex-shrink:0;margin-top:2px;color:var(--ocre);}
+@media(max-width:600px){.modal-amenities{grid-template-columns:1fr;}}
+
 /* GALERIA */
 .galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 .galeria-grid figure{position:relative;border-radius:var(--radio);overflow:hidden;height:230px;margin:0;cursor:zoom-in;}
@@ -297,9 +316,9 @@ footer{background:var(--carbon);color:var(--crema-osc);padding:48px 0 28px;font-
 
 <section class="hero">
   <div class="hero-rot">
-    <img class="hero-slide activo" src="https://images.unsplash.com/photo-1601919051950-bb9f3ffb3fee?fm=jpg&q=80&w=2200&auto=format&fit=crop" alt="Cabaña de madera en pleno bosque, luz de día">
-    <img class="hero-slide" src="https://images.unsplash.com/photo-1679155779025-852535ed4aa3?fm=jpg&q=80&w=2200&auto=format&fit=crop" alt="Cabaña entre montañas patagónicas">
-    <img class="hero-slide" src="https://images.unsplash.com/photo-1698933787134-af2d451985c7?fm=jpg&q=80&w=2200&auto=format&fit=crop" alt="Interior cálido junto al fuego">
+    <img class="hero-slide activo" src="https://images.unsplash.com/photo-1601919051950-bb9f3ffb3fee?fm=jpg&q=80&w=2200&h=1400&auto=format&fit=crop" alt="Cabaña de madera en pleno bosque, luz de día">
+    <img class="hero-slide" src="https://images.unsplash.com/photo-1679155779025-852535ed4aa3?fm=jpg&q=80&w=2200&h=1400&auto=format&fit=crop" alt="Cabaña entre montañas patagónicas">
+    <img class="hero-slide" src="https://images.unsplash.com/photo-1698933787134-af2d451985c7?fm=jpg&q=80&w=2200&h=1400&auto=format&fit=crop" alt="Interior cálido junto al fuego">
     <div class="hero-dots" id="heroDots"></div>
   </div>
   <div class="hero-content">
@@ -322,7 +341,7 @@ footer{background:var(--carbon);color:var(--crema-osc);padding:48px 0 28px;font-
 <section id="somos" data-cp-glow>
   <div class="wrap dos-col">
     <div>
-      <img src="https://images.unsplash.com/photo-1621771674545-849014cf91fa?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Cabaña de madera entre árboles, fachada principal">
+      <img src="https://images.unsplash.com/photo-1680703486830-1b5af60635d7?fm=jpg&q=80&w=1200&h=900&auto=format&fit=crop" alt="Interior lujoso de cabaña de madera con hogar a leña">
     </div>
     <div>
       <div class="eyebrow">Quiénes somos</div>
@@ -351,13 +370,14 @@ footer{background:var(--carbon);color:var(--crema-osc);padding:48px 0 28px;font-
     </div>
     <div class="card-resumen">
       <div>
-        <img id="imgCabana" src="https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Interior cálido de la Cabaña Ciprés">
+        <img id="imgCabana" src="https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?fm=jpg&q=80&w=1200&h=800&auto=format&fit=crop" alt="Interior cálido de la Cabaña Ciprés">
         <div class="calendario" id="calendario"></div>
       </div>
       <div>
         <div class="eyebrow" style="margin-bottom:10px;">Disponibilidad</div>
         <div class="nombre-cabana" id="nombreCabana">Cabaña Ciprés · 4-6 personas</div>
         <p class="desc-cabana" id="descCabana">Cocina completa, calefacción, estar propio y deck con vista al bosque.</p>
+        <button type="button" class="ver-caracteristicas" id="btnCaracteristicas">Ver características completas →</button>
         <div class="detalle-precio" id="precioCabana">Desde $— <span>/ noche</span></div>
         <div class="btns" style="margin-top:6px;">
           <a href="#" class="btn btn-primario" data-cp="confirmar" id="btnPagar" style="background:var(--acento);">Pagar la seña con Mercado Pago</a>
@@ -375,12 +395,12 @@ footer{background:var(--carbon);color:var(--crema-osc);padding:48px 0 28px;font-
     <div class="eyebrow">Así se vive el lugar</div>
     <h2 style="margin-bottom:28px;">Galería</h2>
     <div class="galeria-grid">
-      <figure><img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?fm=jpg&q=75&w=800&auto=format&fit=crop" alt="Cabaña exterior de día"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1639257985296-fe80bc0de1f8?fm=jpg&q=75&w=800&auto=format&fit=crop" alt="Cabaña al atardecer, cielo estrellado"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1670914120781-4b7c8512fc41?fm=jpg&q=75&w=800&auto=format&fit=crop" alt="Living de cabaña con sillón junto a la ventana"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1693297162063-399177bd6e3b?fm=jpg&q=75&w=800&auto=format&fit=crop" alt="Sendero entre el bosque circundante"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1515592559813-3f7dff97e185?fm=jpg&q=75&w=800&auto=format&fit=crop" alt="Fachada de cabaña gris entre árboles"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1708604010245-59d0c22cf9e9?fm=jpg&q=75&w=800&auto=format&fit=crop" alt="Ventana con vista al bosque"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?fm=jpg&q=75&w=800&h=560&auto=format&fit=crop" alt="Cabaña exterior de día"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1697807650304-907257330a3e?fm=jpg&q=75&w=800&h=560&auto=format&fit=crop" alt="Cabaña con deck al anochecer"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1670914120781-4b7c8512fc41?fm=jpg&q=75&w=800&h=560&auto=format&fit=crop" alt="Living de cabaña con sillón junto a la ventana"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1699558983397-c1fb75c3f1fa?fm=jpg&q=75&w=800&h=560&auto=format&fit=crop" alt="Galería exterior con mesa y sillas, ideal para el quincho"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1515592559813-3f7dff97e185?fm=jpg&q=75&w=800&h=560&auto=format&fit=crop" alt="Fachada de otra cabaña del complejo"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1631554668504-79dd66bbfb94?fm=jpg&q=75&w=800&h=560&auto=format&fit=crop" alt="Dormitorio de una de las cabañas"></figure>
     </div>
   </div>
 </section>
@@ -436,6 +456,23 @@ footer{background:var(--carbon);color:var(--crema-osc);padding:48px 0 28px;font-
 <a class="wpp-flotante" data-cp="magnetico" id="wppFlotante" href="#" aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C22 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.36-.49.06-1.11.08-1.79-.11a16.4 16.4 0 0 1-1.62-.6c-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.14.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.56.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.82.89-1.1.19-.28.37-.23.62-.14.26.09 1.63.77 1.9.91.28.14.46.21.53.33.07.12.07.68-.17 1.36z"/></svg>
 </a>
+
+<!-- MODAL DETALLE DE CABAÑA -->
+<div class="modal-overlay" id="modalCabanaOverlay">
+  <div class="modal-box">
+    <button class="modal-cerrar" id="modalCabanaCerrar" aria-label="Cerrar">✕</button>
+    <div class="modal-foto"><img id="modalCabanaFoto" src="" alt=""></div>
+    <div class="modal-cuerpo">
+      <h3 id="modalCabanaNombre"></h3>
+      <div class="modal-precio" id="modalCabanaPrecio"></div>
+      <p id="modalCabanaDesc"></p>
+      <ul class="modal-amenities" id="modalCabanaAmenities"></ul>
+      <div class="btns">
+        <a href="#" class="btn btn-primario" data-cp="magnetico" id="modalCabanaWpp">Reservar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-cerrar" id="lightboxCerrar">Cerrar ✕</span>
@@ -738,13 +775,21 @@ window.CP = CP;   // API explícita para otros scripts del sitio anfitrión
 /* ===== Selector de cabañas (cada una con su propia disponibilidad) ===== */
 const CABANAS = {
   cipres:  { nombre:'Cabaña Ciprés · 4-6 personas',  desc:'Cocina completa, calefacción, estar propio y deck con vista al bosque.', precio:'Desde $—',
-             img:'https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?fm=jpg&q=80&w=1200&auto=format&fit=crop', ocupados:[3,4,11,12,18,19,25], elegido:15 },
+             img:'https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?fm=jpg&q=80&w=1200&h=800&auto=format&fit=crop', ocupados:[3,4,11,12,18,19,25], elegido:15,
+             descLarga:'Cocina-comedor completa, living con estufa y un deck propio con vista directa al bosque. La más elegida por familias por su distribución amplia.',
+             amenities:['Cocina completa equipada','Calefacción central','Deck propio con vista al bosque','Wifi de alta velocidad','Estacionamiento privado','Ropa de cama incluida'] },
   lenga:   { nombre:'Cabaña Lenga · 2-4 personas',    desc:'Ideal para parejas o familias chicas, con estufa a leña y desayunador.', precio:'Desde $—',
-             img:'https://images.unsplash.com/photo-1670914131570-61ef0c05e388?fm=jpg&q=80&w=1200&auto=format&fit=crop', ocupados:[1,2,8,9,10,22,23,29,30], elegido:6 },
+             img:'https://images.unsplash.com/photo-1670914131570-61ef0c05e388?fm=jpg&q=80&w=1200&h=800&auto=format&fit=crop', ocupados:[1,2,8,9,10,22,23,29,30], elegido:6,
+             descLarga:'La más buscada por parejas: estufa a leña, desayunador de madera maciza y un ambiente compacto pero muy cálido, ideal para desconectar en invierno.',
+             amenities:['Estufa a leña','Desayunador de madera','Calefacción','Wifi de alta velocidad','Estacionamiento privado','Kit de bienvenida'] },
   coihue:  { nombre:'Cabaña Coihue · 6-8 personas',   desc:'La más grande, dos plantas, quincho propio y vista al bosque.',         precio:'Desde $—',
-             img:'https://images.unsplash.com/photo-1693298025144-44309c60e8a8?fm=jpg&q=80&w=1200&auto=format&fit=crop', ocupados:[5,6,7,13,14,20,21,27,28], elegido:9 },
+             img:'https://images.unsplash.com/photo-1693298025144-44309c60e8a8?fm=jpg&q=80&w=1200&h=800&auto=format&fit=crop', ocupados:[5,6,7,13,14,20,21,27,28], elegido:9,
+             descLarga:'Dos plantas, dos baños completos y quincho propio con parrilla — pensada para grupos grandes o familias numerosas sin resignar comodidad.',
+             amenities:['2 plantas, 2 baños completos','Quincho propio con parrilla','Cocina completa equipada','Calefacción central','Estacionamiento privado','Wifi de alta velocidad'] },
   arrayan: { nombre:'Cabaña Arrayán · 2-3 personas',  desc:'La más íntima, pensada para escapadas cortas, con deck privado.',        precio:'Desde $—',
-             img:'https://images.unsplash.com/photo-1648326342761-8a9abfb7a2c0?fm=jpg&q=80&w=1200&auto=format&fit=crop', ocupados:[2,3,9,16,17,24,26], elegido:20 }
+             img:'https://images.unsplash.com/photo-1648326342761-8a9abfb7a2c0?fm=jpg&q=80&w=1200&h=800&auto=format&fit=crop', ocupados:[2,3,9,16,17,24,26], elegido:20,
+             descLarga:'La más íntima del complejo: ambiente cálido de un solo ambiente, deck privado y todo lo necesario para una escapada corta de a dos.',
+             amenities:['Deck privado','Calefacción','Wifi de alta velocidad','Estacionamiento privado','Kit de bienvenida','Ropa de cama incluida'] }
 };
 const tabs = document.querySelectorAll('.tab-cabana');
 const imgCabana = document.getElementById('imgCabana');
@@ -764,7 +809,9 @@ function pintarCalendario(c){
     calEl.appendChild(div);
   }
 }
+let cabanaActivaId = 'cipres';
 function pintarCabana(id){
+  cabanaActivaId = id;
   const c = CABANAS[id];
   imgCabana.src = c.img;
   nombreCabana.textContent = c.nombre;
@@ -772,6 +819,26 @@ function pintarCabana(id){
   precioCabana.innerHTML = c.precio + ' <span>/ noche</span>';
   pintarCalendario(c);
 }
+
+/* ===== Modal "Ver características completas" ===== */
+const modalCabanaOverlay = document.getElementById('modalCabanaOverlay');
+function abrirModalCabana(){
+  const c = CABANAS[cabanaActivaId];
+  document.getElementById('modalCabanaFoto').src = c.img;
+  document.getElementById('modalCabanaFoto').alt = c.nombre;
+  document.getElementById('modalCabanaNombre').textContent = c.nombre;
+  document.getElementById('modalCabanaPrecio').innerHTML = c.precio + ' / noche';
+  document.getElementById('modalCabanaDesc').textContent = c.descLarga;
+  document.getElementById('modalCabanaAmenities').innerHTML = c.amenities.map(a =>
+    `<li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> ${a}</li>`
+  ).join('');
+  modalCabanaOverlay.classList.add('abierto');
+}
+document.getElementById('btnCaracteristicas').addEventListener('click', abrirModalCabana);
+document.getElementById('modalCabanaCerrar').addEventListener('click', ()=> modalCabanaOverlay.classList.remove('abierto'));
+modalCabanaOverlay.addEventListener('click', (e)=>{ if(e.target === modalCabanaOverlay) modalCabanaOverlay.classList.remove('abierto'); });
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') modalCabanaOverlay.classList.remove('abierto'); });
+
 tabs.forEach(t=>{
   t.addEventListener('click', ()=>{
     tabs.forEach(x=>x.classList.remove('activa'));
@@ -787,6 +854,10 @@ function mensajeWpp(){
   const c = CABANAS[document.querySelector('.tab-cabana.activa').dataset.id];
   return encodeURIComponent(`Hola! Quería consultar por la ${c.nombre.split(' · ')[0]} para reservar.`);
 }
+document.getElementById('modalCabanaWpp').addEventListener('click', (e)=>{
+  e.preventDefault();
+  window.open(`https://wa.me/${WPP_DEMO}?text=${mensajeWpp()}`, '_blank');
+});
 document.getElementById('btnWpp').addEventListener('click', (e)=>{
   e.preventDefault();
   window.open(`https://wa.me/${WPP_DEMO}?text=${mensajeWpp()}`, '_blank');
